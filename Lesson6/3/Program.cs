@@ -6,16 +6,28 @@
 //8, 3, 4, 2 -> 28
 
 
-int[] array = {5, 2, 4, 9, 1, 2};
-int i = 0;
-int sum = 0;
-while (i < array.Length/2)
+
+Console.WriteLine("Введите число, соответствующее размеру массива");
+int n = Convert.ToInt32(Console.ReadLine());
+int index = 0; // Переменная для цикла while
+int[] array = new int[n];
+Random rand = new Random();
+for (int i = 0; i < array.Length; i++) //переменая для цикла for объявляется в самом цикле.
 {
-    
-    int product = array[i] * array[array.Length - i-1];
-    Console.WriteLine(array [i] + ",  " + array[array.Length - i-1]);
-    Console.WriteLine(product);
-    sum = sum + product;
-    i++;
+array[i] = rand.Next(1, 9);
+
 }
-Console.WriteLine("Сумма произведений пар чисел в одномерном целочисленном массиве: " + sum);
+Console.WriteLine(string.Join(" ", array)); //простая форма вывода массива на печать.
+
+int sum = 0;
+
+while (index < array.Length/2)
+{
+int product = array[index] * array[array.Length - index-1];
+Console.WriteLine(array [index] + ", " + array[array.Length - index-1]);
+Console.WriteLine(product);
+sum = sum + product;
+index++;
+}
+
+Console.WriteLine(sum);
